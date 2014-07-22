@@ -66,8 +66,18 @@ h1 {
 	box-shadow: 0 0px 0 1px #999, 0 7px 0 1px #999, 0 14px 0 1px #999; 
 }
 .top-bar img {
-	height: 4em;
-	width: 4em;
+	height: 2.5em;
+	width: 2.5em;
+	margin-right: 1em;
+}
+.top-bar .title-area .name a {
+	color: #999;
+	font-family:'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 300;
+	display: block;
+	height: 45px;
+	line-height: 45px;
 }
 .top-bar.expanded .title-area {
     background: none repeat scroll 0 0 #fff;
@@ -84,6 +94,10 @@ h1 {
 	background-color: transparent;
 }
 @media only screen and (min-width: 40.063em) { 
+	.top-bar .title-area .name a {
+		height: 80px;
+		line-height: 80px;
+	}
 	.top-bar-section li:not(.has-form) a:not(.button) {
 		font-size: 20px;
 		font-weight: 300;
@@ -100,25 +114,35 @@ h1 {
 
 /* Custom */	
 .slides section {
-	height: 55em;
+	height: 35em;
 	background-size: cover;
 }
 .slides h1 {
 	color: #fff;
-	font-size: 3.4rem;
+	font-size: 2.4rem;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
-	top: 100px;
+	top: 2em;
 	margin: 0 auto;
-	padding: 200px 0 0;
+	padding: 50px 0 0;
 	z-index: 99;
 }
+@media only screen and (min-width: 40.063em) {
+	.slides section {
+		height: 55em;
+	}
+	.slides h1 {
+		font-size: 3.4rem;
+		top: 10em;
+		padding: 200px 0 0;
+	}
+}
 #countries {
-	/*margin-bottom: 1rem;*/
+	margin-top: 1.25rem;
 }
 #countries .country {
 	text-align: center;
-	padding: 2.5rem 1.25rem;
+	/*padding: 2.5rem 1.25rem;*/
 }
 #countries .country a {
 	display: inline-block;
@@ -134,5 +158,5 @@ h1 {
 	line-height: 2em;
 	color: #999;
 	font-size: 0.7rem;
-	padding: 1.25rem;
+	padding: 0.25rem;
 }

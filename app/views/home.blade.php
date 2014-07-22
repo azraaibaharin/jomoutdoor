@@ -4,7 +4,7 @@
 <div class="contain-to-grid">
 	<nav class="top-bar" data-topbar> 
 		<ul class="title-area">
-			<li class="name"></li>
+			<li class="name"><a href="#"><!-- <img src="img/logo.jpg" /> -->JomOutdoor</a></li>
 			<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 		 	<li class="toggle-topbar menu-icon">
 		 		<a href="#"><span></span></a>
@@ -12,9 +12,6 @@
 		</ul> 
 
 		<section class="top-bar-section"> 
-			<ul class="left">
-				<li><a href="#">Logo</a></li> 
-			</ul>
 			<!-- Right Nav Section --> 
 			<ul class="right">
 				<li><a href="#">About Us</a></li> 
@@ -64,7 +61,7 @@
 			<a href="" style="background-image: url('img/flag_indonesia.gif')" class="avatar"></a>		
 		</li> 
 		<li class="country">
-			<a href="" style="background-image: url('img/flag_vietnam.gif')" class="avatar"></a>		
+			<a href="" style="background-image: url('img/flag_thailand.gif')" class="avatar"></a>		
 		</li> 
 		<li class="country">
 			<a href="" style="background-image: url('img/flag_nepal.gif')" class="avatar"></a>		
