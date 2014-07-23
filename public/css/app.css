@@ -1,162 +1,68 @@
-@import url(//fonts.googleapis.com/css?family=Lato:700);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,700,600);
 
 body {
-	height: 100%;
-	margin:0;
-	font-family:'Open Sans', sans-serif;
-	font-weight: 400;
-	font-size: 62.5%; /* to cater for direct conversion of px to rem. */
-	text-align:center;
+	font-family: 'Open Sans';
+	background-color: #f4f4f4;
+}
+
+.container {
+}
+
+.navbar {
+	background-color: transparent;
+	margin-bottom: 0;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
 	color: #999;
+	background-color: transparent;
 }
 
-a, a:visited {
-	text-decoration:none;
+.img-circle {
+	border: 5px solid #d1d1d1;
+	margin-bottom: 15px;
 }
 
-h1 {
-	font-size: 32px;
-	margin: 16px 0 0 0;
-}
-
-/* Rounded avatars */
-.avatar {
-    float: left;
-    /*margin-top: 1em;
-    margin-right: 1em;*/
-    position: relative;
-
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-
-    -webkit-box-shadow: 0 0 0 4px #fff;
-    -moz-box-shadow: 0 0 0 4px #fff;
-    box-shadow: 0 0 0 4px #fff;
-
-    background-size: cover;
-}
-
-/* Overrides */
-#hero.row {
-	max-width: 100%;
-}
-.column,
-.columns {
-  padding-left: 0;
-  padding-right: 0;
-}
 .slick-slider {
 	margin-bottom: 0;
 }
-.contain-to-grid {
-	background-color: transparent;
+
+.countries {
+	padding-top: 15px;
 }
-.top-bar {
-	background-color: #fff;
-}
-.top-bar .toggle-topbar.menu-icon a {
-	color: #999;
-}
-.top-bar .toggle-topbar.menu-icon a span::after {
-	box-shadow: 0 0px 0 1px #999, 0 7px 0 1px #999, 0 14px 0 1px #999; 
-}
-.top-bar .toggle-topbar.menu-icon a span:hover:after {
-	box-shadow: 0 0px 0 1px #999, 0 7px 0 1px #999, 0 14px 0 1px #999; 
-}
-.top-bar img {
-	height: 2.5em;
-	width: 2.5em;
-	margin-right: 1em;
-}
-.top-bar .title-area .name a {
-	color: #999;
-	font-family:'Open Sans', sans-serif;
-	font-size: 20px;
-	font-weight: 300;
-	display: block;
-	height: 45px;
-	line-height: 45px;
-}
-.top-bar.expanded .title-area {
-    background: none repeat scroll 0 0 #fff;
-}
-.top-bar.expanded ul {
-    background: none repeat scroll 0 0 #F4F4F4;
-}
-.top-bar-section ul li {
-	background-color: transparent;	
-}
-.top-bar-section li:not(.has-form) a:not(.button) {
-	color: #999;
-	font-family:'Open Sans', sans-serif;
-	background-color: transparent;
-}
-@media only screen and (min-width: 40.063em) { 
-	.top-bar .title-area .name a {
-		height: 80px;
-		line-height: 80px;
-	}
-	.top-bar-section li:not(.has-form) a:not(.button) {
-		font-size: 20px;
-		font-weight: 300;
-		line-height: 80px;
-	}
-}
-.top-bar-section li:not(.has-form) a:not(.button):hover {
-	color: #999;
-	background-color: transparent;
-}
-[class*="block-grid-"] {
-    margin: 0;
+.countries .col-lg-3 {
+	text-align: center;
 }
 
-/* Custom */	
+.slides {
+	margin-bottom: 0;
+}
 .slides section {
-	height: 35em;
+	height: 550px;
 	background-size: cover;
 }
 .slides h1 {
 	color: #fff;
-	font-size: 2.4rem;
-	font-family: 'Open Sans', sans-serif;
+	font-size: 48px;
 	font-weight: 300;
-	top: 2em;
-	margin: 0 auto;
-	padding: 50px 0 0;
-	z-index: 99;
-}
-@media only screen and (min-width: 40.063em) {
-	.slides section {
-		height: 55em;
-	}
-	.slides h1 {
-		font-size: 3.4rem;
-		top: 10em;
-		padding: 200px 0 0;
-	}
-}
-#countries {
-	margin-top: 1.25rem;
-}
-#countries .country {
 	text-align: center;
-	/*padding: 2.5rem 1.25rem;*/
+	margin: 0;
+	padding: 0;
+	padding-top: 150px;
 }
-#countries .country a {
-	display: inline-block;
-	float: none;
-	height: 8em;
-	width: 8em;
-	background-position: -1px -1px;
-	-webkit-box-shadow: 0 0 0 5px #ccc;
-    -moz-box-shadow: 0 0 0 5px #ccc;
-    box-shadow: 0 0 0 5px #ccc;
+
+footer {
+	/*margin-top: 10px;*/
+	font-size: 12px;
+	text-align: center;
 }
-#footer label {
-	line-height: 2em;
+footer p {
 	color: #999;
-	font-size: 0.7rem;
-	padding: 0.25rem;
+	line-height: 60px;
+	margin: 0;
+	padding: 0;
+}
+footer a {
+	color: #666;
 }

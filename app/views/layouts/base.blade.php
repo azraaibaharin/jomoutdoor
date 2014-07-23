@@ -3,28 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Jom Outdoor</title>
-	{{ HTML::style('css/normalize.css'); }}
-	{{ HTML::style('css/foundation.css'); }}
-	{{ HTML::style('css/slick.css'); }}
-	{{ HTML::style('css/app.css'); }}
-	@yield('head')
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	@yield('stylesheets')
 </head>
 <body>
-	<div class="main">
-		@yield('main')
-	</div>
-	<div class='scripts'>
-		{{ HTML::script('js/vendor/modernizr.js'); }}
-		{{ HTML::script('js/vendor/jquery.js'); }}
-		{{ HTML::script('js/vendor/jquery.cookie.js'); }}
-		{{ HTML::script('js/vendor/fastclick.js'); }}
-		{{ HTML::script('js/vendor/placeholder.js'); }}
-		{{ HTML::script('js/vendor/slick.min.js'); }}
-		{{ HTML::script('js/foundation/foundation.js'); }}
-		{{ HTML::script('js/foundation/foundation.dropdown.js'); }}
-		{{ HTML::script('js/foundation/foundation.topbar.js'); }}
-		{{ HTML::script('js/app.js'); }}
-		@yield('scripts')
-	</div>
+	@yield('content')
+
+	{{ HTML::script('js/vendor/jquery.js'); }}	
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	{{ HTML::script('js/app.js'); }}
+	@yield('scripts')
 </body>
 </html>

@@ -1,101 +1,60 @@
 @extends('layouts.base')
 
-@section('main')
-<div class="contain-to-grid">
-	<nav class="top-bar" data-topbar> 
-		<ul class="title-area">
-			<li class="name"><a href="#"><!-- <img src="img/logo.jpg" /> -->JomOutdoor</a></li>
-			<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-		 	<li class="toggle-topbar menu-icon">
-		 		<a href="#"><span></span></a>
-		 	</li> 
-		</ul> 
+@section('stylesheets')
+	{{ HTML::style('css/slick.css'); }}
+	{{ HTML::style('css/app.css'); }}
+@stop
 
-		<section class="top-bar-section"> 
-			<!-- Right Nav Section --> 
-			<ul class="right">
-				<li><a href="#">About Us</a></li> 
-			</ul>
-		</section> 
-	</nav>
-</div>
+@section('content')
+	@include('layouts.partials.nav')
+	
+	<div class="slides">
+		<div>
+			<section style="background-image: url('img/slide1.jpg')">
+				<h1>Adventure for Everyone</h1>
+			</section>
+		</div>
+		<div>
+			<section style="background-image: url('img/slide2.jpg')">
+				<h1>Adventure for Everyone</h1>
+			</section>
+		</div>
+		<div>
+			<section style="background-image: url('img/slide3.jpg')">
+				<h1>Adventure for Everyone</h1>
+			</section>
+		</div>
+		<div>
+			<section style="background-image: url('img/slide4.jpg')">
+				<h1>Adventure for Everyone</h1>
+			</section>
+		</div>
+		<div>
+			<section style="background-image: url('img/slide5.jpg')">
+				<h1>Adventure for Everyone</h1>
+			</section>
+		</div>
+	</div>	
 
-<div id="hero" class="row">
-	<div class="small-12 columns">
-		<div class="slides">
-			<div>
-				<section style="background-image: url('img/slide1.jpg')">
-					<h1>Adventure for Everyone</h1>
-				</section>
-			</div>
-			<div>
-				<section style="background-image: url('img/slide2.jpg')">
-					<h1>Adventure for Everyone</h1>
-				</section>
-			</div>
-			<div>
-				<section style="background-image: url('img/slide3.jpg')">
-					<h1>Adventure for Everyone</h1>
-				</section>
-			</div>
-			<div>
-				<section style="background-image: url('img/slide4.jpg')">
-					<h1>Adventure for Everyone</h1>
-				</section>
-			</div>
-			<div>
-				<section style="background-image: url('img/slide5.jpg')">
-					<h1>Adventure for Everyone</h1>
-				</section>
-			</div>
-		</div>	
-	</div>
-</div>
-
-<div id="countries" class="row">
-	<ul class="small-block-grid-2 medium-block-grid-4 large-block-grid-4">
-		<li class="country">
-			<a href="" style="background-image: url('img/flag_malaysia.gif')" class="avatar"></a>		
-		</li> 
-		<li class="country">
-			<a href="" style="background-image: url('img/flag_indonesia.gif')" class="avatar"></a>		
-		</li> 
-		<li class="country">
-			<a href="" style="background-image: url('img/flag_thailand.gif')" class="avatar"></a>		
-		</li> 
-		<li class="country">
-			<a href="" style="background-image: url('img/flag_nepal.gif')" class="avatar"></a>		
-		</li> 
-	</ul>
-</div>
-
-<!-- <div id="countries" class="row">
-	<div class="small-12 medium-3 large-3 large-centerd columns">
-		<div class="country">
-			<a href="" style="background-image: url('img/flag_malaysia.gif')" class="avatar"></a>			
+	<div class="countries container">
+		<div class="row">
+			<div class="col-lg-3">
+	          	<img style="width: 180px; height: 180px;" alt="Generic placeholder image" src="img/flag_malaysia.gif" class="img-circle">
+	        </div>
+	        <div class="col-lg-3">
+	          	<img style="width: 180px; height: 180px;" alt="Generic placeholder image" src="img/flag_indonesia.gif" class="img-circle">
+	        </div>
+	        <div class="col-lg-3">
+	          	<img style="width: 180px; height: 180px;" alt="Generic placeholder image" src="img/flag_thailand.gif" class="img-circle">
+	        </div>
+	        <div class="col-lg-3">
+	          	<img style="width: 180px; height: 180px;" alt="Generic placeholder image" src="img/flag_nepal.gif" class="img-circle">
+	        </div>
 		</div>
 	</div>
-	<div class="small-12 medium-3 large-3 columns">
-		<div class="country">
-			<a href="" style="background-image: url('img/flag_indonesia.gif')" class="avatar"></a>
-		</div>
-	</div>
-	<div class="small-12 medium-3 large-3 columns">
-		<div class="country">
-			<a href="" style="background-image: url('img/flag_vietnam.gif')" class="avatar"></a>
-		</div>
-	</div>
-	<div class="small-12 medium-3 large-3 columns">
-		<div class="country">
-			<a href="" style="background-image: url('img/flag_nepal.gif')" class="avatar"></a>
-		</div>
-	</div>
-</div> -->
+	@include('layouts.partials.footer')
+@stop
 
-<div id="footer" class="row">
-	<div class="small-12 columns">
-		<label>Copyright © 2014 JomOutdoor. All rights reserved. Terms of Use | Privacy Policy</label>
-	</div>
-</div>
-
+@section('scripts')
+	{{ HTML::script('js/vendor/slick.min.js'); }}
 @stop
