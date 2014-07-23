@@ -2,44 +2,49 @@
 
 body {
 	font-family: 'Open Sans';
-	background-color: #f4f4f4;
-}
-
-.container {
+	background-color: #d6d6d6;
 }
 
 .navbar {
-	background-color: transparent;
+	background-color: #fff;
 	margin-bottom: 0;
 }
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
+
+.navbar-default .navbar-nav > li > a {
 	color: #999;
+	font-size: 19px;
+	font-weight: 300;
 	background-color: transparent;
 }
-
-.img-circle {
-	border: 5px solid #d1d1d1;
-	margin-bottom: 15px;
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+	color: #888;
 }
 
 .slick-slider {
 	margin-bottom: 0;
 }
 
-.countries {
-	padding-top: 15px;
+.countries-wrapper {
+	background-color: #e6e6e6;
 }
-.countries .col-lg-3 {
+.countries .col-sm-3 {
 	text-align: center;
+}
+.countries img {
+	/*width: 50%;*/
+	/*height: 100px;*/
+	margin: 30px 0;
 }
 
 .slides {
 	margin-bottom: 0;
 }
 .slides section {
-	height: 550px;
+	height: 700px;
 	background-size: cover;
 }
 .slides h1 {
@@ -53,16 +58,16 @@ body {
 }
 
 footer {
-	/*margin-top: 10px;*/
 	font-size: 12px;
 	text-align: center;
 }
 footer p {
 	color: #999;
-	line-height: 60px;
+	line-height: 50px;
 	margin: 0;
 	padding: 0;
 }
 footer a {
-	color: #666;
+	color: #999;
+	font-weight: 600;
 }

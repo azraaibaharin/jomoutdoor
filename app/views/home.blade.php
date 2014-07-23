@@ -36,22 +36,25 @@
 		</div>
 	</div>	
 
-	<div class="countries container">
-		<div class="row">
-			<div class="col-lg-3">
-	          	<img style="width: 180px; height: 180px;" alt="Generic placeholder image" src="img/flag_malaysia.gif" class="img-circle">
-	        </div>
-	        <div class="col-lg-3">
-	          	<img style="width: 180px; height: 180px;" alt="Generic placeholder image" src="img/flag_indonesia.gif" class="img-circle">
-	        </div>
-	        <div class="col-lg-3">
-	          	<img style="width: 180px; height: 180px;" alt="Generic placeholder image" src="img/flag_thailand.gif" class="img-circle">
-	        </div>
-	        <div class="col-lg-3">
-	          	<img style="width: 180px; height: 180px;" alt="Generic placeholder image" src="img/flag_nepal.gif" class="img-circle">
-	        </div>
+	<div class="countries-wrapper">
+		<div class="countries container">
+			<div class="row">
+		        <div class="col-xs-6 col-sm-3">
+		          	<img alt="Generic placeholder image" src="img/flag_malaysia_rd.png">
+		        </div>
+		        <div class="col-xs-6 col-sm-3">
+		          	<img alt="Generic placeholder image" src="img/flag_indonesia_rd.png">
+		        </div>
+		        <div class="col-xs-6 col-sm-3">
+		          	<img alt="Generic placeholder image" src="img/flag_thailand_rd.png">
+		        </div>
+		        <div class="col-xs-6 col-sm-3">
+		          	<img alt="Generic placeholder image" src="img/flag_nepal_rd.png">
+		        </div>
+			</div>
 		</div>
 	</div>
+	
 	@include('layouts.partials.footer')
 @stop
 

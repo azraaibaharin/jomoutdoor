@@ -13,7 +13,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="#">About</a></li>
+                        <li><a href="#">About</a></li>
                     </ul>
                 </div>
             </div>
