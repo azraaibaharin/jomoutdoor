@@ -7,4 +7,3 @@ $(document).ready(function(){
 		speed: 500
 	});
 });
-$(document).foundation();

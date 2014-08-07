@@ -1,0 +1,101 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,700,600);
+
+body {
+	font-family: 'Open Sans';
+	background-color: #d6d6d6;
+}
+
+a {
+	color: #999;
+	font-weight: 600;
+	&:hover {
+		color: #777;
+		text-decoration: none;	
+	}
+}
+
+.navbar {
+	background-color: #fff;
+	margin-bottom: 0;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #999;
+	font-size: 19px;
+	font-weight: 300;
+	background-color: transparent;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+	color: #888;
+}
+
+.slick-slider {
+	margin-bottom: 0;
+}
+
+.countries-wrapper {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #e6e6e6;
+	transition: all 1s ease;
+}
+
+.countries {
+	.col-sm-3 {
+		text-align: center;
+	}
+	img {
+		display: none;
+		margin: 30px 0;
+		&.grayscale {
+			display: inline-block;
+			margin: 30px 0;		
+		}
+	}
+	a {
+		&:hover {
+			img {
+				display: inline-block;
+				&.grayscale {
+					display: none;
+				}
+			}			
+		}
+	}
+}
+
+.slides {
+	margin-bottom: 0;
+	section {
+		min-height: 600px;
+		height: 100%;
+		background-size: cover;
+	}
+	h1 {
+		color: #fff;
+		font-size: 48px;
+		font-weight: 300;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+		padding-top: 150px;
+	}
+}
+
+footer {
+	text-align: center;
+	background-color: #d6d6d6;
+	p {
+		color: #999;
+		font-size: 12px;
+		line-height: 50px;
+		margin: 0;
+		padding: 0;	
+	}
+}
