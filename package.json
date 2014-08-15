@@ -1,0 +1,24 @@
+{
+  "name": "jomoutdoor",
+  "version": "0.0.0",
+  "description": "jomoutdoor website",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azraaibaharin/jomoutdoor.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/azraaibaharin/jomoutdoor/issues"
+  },
+  "homepage": "https://github.com/azraaibaharin/jomoutdoor",
+  "devDependencies": {
+    "gulp": "~3.8.7",
+    "gulp-sass": "~0.7.3",
+    "gulp-autoprefixer": "0.0.8"
+  }
+}
