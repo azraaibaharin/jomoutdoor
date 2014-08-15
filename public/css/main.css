@@ -10,6 +10,12 @@ a {
     color: #777;
     text-decoration: none; }
 
+.panel {
+  margin-top: 10px; }
+  .panel .panel-heading .panel-title img {
+    height: 20px;
+    margin-right: 6px; }
+
 .navbar {
   background-color: #fff;
   margin-bottom: 0; }

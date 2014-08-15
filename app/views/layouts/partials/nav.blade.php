@@ -12,7 +12,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{{ route('about') }}}">About</a></li>
-                <li><a href="{{{ route('admin.index') }}}">Admin</a></li>
+                <li><a href="{{{ route('admin') }}}">Admin</a></li>
             </ul>
         </div>
     </div>
