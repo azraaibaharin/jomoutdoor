@@ -15,9 +15,14 @@
 					<div class="panel-body">
 						{{ Form::open(['url' => 'countries/'.$country->id, 'method' => 'put', 'files' => true]) }}
 						@include('countries.partials.form', ['form_type' => 'Edit', 'errors' => $errors])	
-						{{ Form::close() }}
 					</div>
 				</div>
+				<h1>Edit a country</h1>
+				<p>{{ Form::text('name', $country->name) }}</p>
+				<p>{{ Form::textarea('description', $country->description) }}</p>
+				<p>{{ Form::file('flag') }}</p>
+				<p>{{ Form::submit('Save') }}{{ link_to_route('countries.show', 'Cancel', ['name' => $country->name]) }}</p>
+				{{ Form::close() }}
 	        </div>
 		</div>
 	</div>
