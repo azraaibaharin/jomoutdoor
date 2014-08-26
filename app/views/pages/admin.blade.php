@@ -12,15 +12,19 @@
 			<div class="col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-					    <h3 class="panel-title">All countries</h3>
+					    <h3 class="panel-title">
+					    	All countries
+					    </h3>
 					</div>
 					<div class="panel-body">
 						<div class="list-group">
 						@foreach ($countries as $country)
-			          		{{ link_to_route("countries.show", $country->name, ['name' => $country->name], ['class' => 'list-group-item']) }}
+							<div class="list-group-item">
+								<a href="{{ route('countries.show', ['name' => $country->name]) }}" title="View country"><img src="{{ asset('img/'.$country->flag_name) }}" alt="{{ $country->name }}" height="20"> {{ $country->name }}</a>
+							</div>
 						@endforeach
 						</div>
-						{{ link_to_route("countries.create", "Add a country", [], ['class' => 'btn btn-default']) }}		
+				    	<a href="{{ route('countries.create') }}" class="btn btn-sm btn-primary"  title="Add a country">Add a country</a>
 					</div>
 				</div>
 				

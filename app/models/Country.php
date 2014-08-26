@@ -2,7 +2,6 @@
 
 class Country extends Eloquent {
 
-
 	protected $fillable = ['name', 'description', 'flag'];
 
 	public $errors;
@@ -21,6 +20,11 @@ class Country extends Eloquent {
 	 */
 	protected $table = 'countries';
 	
+	public function places() 
+	{
+		return $this->hasMany('Place');
+	}
+
 	/**
 	 * Validate data based on set of Country model rules.
 	 * 
@@ -37,10 +41,4 @@ class Country extends Eloquent {
 
 		return false;
 	}
-
-	public function places() 
-	{
-		return $this->hasMany('Place');
-	}
-
 }

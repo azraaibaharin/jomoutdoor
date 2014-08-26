@@ -14,7 +14,9 @@
 					<div class="panel-heading"><h3 class="panel-title">Add a country</h3></div>
 					<div class="panel-body">
 						{{ Form::open(['route' => 'countries.store', 'files' => true, 'role' => 'form']) }}
-						@include('countries.partials.form', ['form_type' => 'Add', 'errors' => $errors])	
+						@include('countries.partials.form', ['errors' => $errors])	
+						{{ link_to_route('admin', 'Cancel', [], ['class' => 'btn btn-link']) }}
+
 						{{ Form::close() }}
 					</div>
 				</div>

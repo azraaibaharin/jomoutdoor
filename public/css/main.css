@@ -15,6 +15,23 @@ a {
   .panel .panel-heading .panel-title img {
     height: 20px;
     margin-right: 6px; }
+  .panel .panel-body h2 {
+    margin-top: 0px; }
+  .panel .panel-body span {
+    margin-left: 10px;
+    margin-right: 3px; }
+
+.page-banner {
+  width: 100%;
+  height: 200px;
+  -webkit-background-size: cover;
+          background-size: cover;
+  margin-bottom: 10px; }
+
+p.bg-info {
+  text-align: center;
+  padding: 10px;
+  margin: 10px 0 20px; }
 
 .navbar {
   background-color: #fff;

@@ -11,11 +11,11 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="panel panel-default">
-					<div class="panel-heading"><h3 class="panel-title">Add a place in <i>{{ $country->name }}</i></h3></div>
+					<div class="panel-heading"><h3 class="panel-title">Edit <i>{{ $place->name }}</i></h3></div>
 					<div class="panel-body">
-						{{ Form::open(['route' => 'places.store', 'role' => 'form']) }}
-						@include('places.partials.form', ['errors' => $errors])	
-						{{ link_to_route('countries.show', 'Cancel', [$country->name], ['class' => 'btn btn-link']) }}
+						{{ Form::model($place, ['method' => 'put', 'route' => ['places.update', $place->id], 'role' => 'form']) }}
+						@include('places.partials.form', ['buttonText' => 'Submit', 'errors' => $errors])	
+						{{ link_to_route('countries.show', 'Cancel', ['countryName' => $country->name], ['class' => 'btn btn-link']) }}
 						{{ Form::close() }}
 					</div>
 				</div>

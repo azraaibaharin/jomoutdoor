@@ -17,8 +17,8 @@ class CreatePackagesTable extends Migration {
 			$table->increments('id');
 			$table->integer('place_id');
 			$table->string('name');
-			$table->string('description');
-			$table->string('tentative');
+			$table->text('description');
+			$table->text('tentative');
 			$table->timestamps();
 		});
 	}

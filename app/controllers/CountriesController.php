@@ -15,19 +15,6 @@ class CountriesController extends \BaseController {
 	}
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$countries = $this->country->all();
-
-		return View::make('countries.index')->withCountries($countries);
-	}
-
-
-	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
@@ -59,6 +46,9 @@ class CountriesController extends \BaseController {
 		if ($country) 
 		{
 			return Redirect::route('countries.show', $country->name)->withMessage('Success!');
+		} else
+		{
+			return Redirect::back()->withInput()->withErrors('Unable to add country, '. $country->name . '.');
 		}
 	}
 
@@ -94,15 +84,20 @@ class CountriesController extends \BaseController {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  int  $country_id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($country_id)
 	{
-		$country = $this->country->findOrFail($id);
+		if (!$this->country->isValid(Input::all()))
+		{
+			return Redirect::back()->withInput()->withErrors($this->country->errors);
+		}
+
+		$country = $this->country->findOrFail($country_id);
 		$country->name = Input::get('name');
 		$country->description = Input::get('description');
-		$country->flag_name = $this->getFlagFilename();
+		// $country->flag_name = $this->getFlagFilename();
 		$country->save();
 
 		return Redirect::route('countries.show', $country->name)->withMessage('Updated!');
@@ -112,12 +107,12 @@ class CountriesController extends \BaseController {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  int  $country_id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($country_id)
 	{
-		$country = $this->country->findOrFail($id);
+		$country = $this->country->findOrFail($country_id);
 		$country->delete();
 
 		return Redirect::route('admin');
