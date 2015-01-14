@@ -20,9 +20,9 @@ class Country extends Eloquent {
 	 */
 	protected $table = 'countries';
 	
-	public function places() 
+	public function activities() 
 	{
-		return $this->hasMany('Place');
+		return $this->hasMany('Activity');
 	}
 
 	/**

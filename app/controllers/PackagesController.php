@@ -3,6 +3,7 @@
 class PackagesController extends \BaseController {
 
 	protected $package;
+	protected $defaultStatus = 'active', $defaultImageUrl = '';
 
 	/*
 	 * Constructor.
@@ -19,10 +20,10 @@ class PackagesController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create($place_id)
+	public function create($location_id)
 	{
-		$place = Place::findOrFail($place_id);
-		return View::make('packages.create')->withPlace($place);
+		$location = Location::findOrFail($location_id);
+		return View::make('packages.create')->withLocation($location);
 	}
 
 
@@ -39,19 +40,20 @@ class PackagesController extends \BaseController {
 		}
 
 		$package = $this->package;
-		$package->place_id = Input::get('placeId');
+		$package->location_id = Input::get('locationId');
 		$package->name = Input::get('name');
-		$package->description = Input::get('description');
-		$package->tentative = Input::get('tentative');
+		$package->content = Input::get('content');
+		$package->image_url = Input::get('imageUrl');
+		$package->status = $defaultStatus;
 		$package->save();
 
 		if ($package)
 		{
-			$country = $this->package->place->country;
-			return Redirect::route('countries.show', $country->name)->withMessage('Successfully added package ' . $package->name . '.');
+			$country = $this->package->location->activity->country;
+			return Redirect::route('country.show', $country->name)->withMessage('Successfully added <b><i>'.$package->name.'</b></i> package.');
 		} else
 		{
-			return Redirect::back()->withInput()->withErrors('Unable to add package, ' .  $package->name . '.');
+			return Redirect::back()->withInput()->withErrors('Unable to add <b><i>'.$package->name.'</b></i> package.');
 		}
 	}
 
@@ -64,21 +66,38 @@ class PackagesController extends \BaseController {
 	 */
 	public function edit($package_id)
 	{
-		$package = $this->packages->findOrFail($package_id);
-		$place = Place::findOrFail($package->place_id);
-		return View::make('packages.edit')->withPackage($package)->withPlace($place);
+		$package = $this->package->findOrFail($package_id);
+		return View::make('packages.edit')->withPackage($package);
 	}
 
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  int  $package_id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($package_id)
 	{
-		//
+		if (!$this->package->isValid(Input::all()))
+		{
+			return Redirect::back()->withInput()->withErrors($this->package->errors);
+		}
+
+		$package = $this->package->findOrFail($package_id);
+		$package->name = Input::get('name');
+		$package->content = Input::get('content');
+		$package->image_url = Input::get('imageUrl');
+		$package->save();
+
+		if ($package)
+		{
+			$country = $package->location->activity->country;
+			return Redirect::route('country.show', $country->name)->withMessage('Successfully updated <b><i>'.$package->name.'</b></i> package.');
+		} else
+		{
+			return Redirect::back()->withInput()->withErrors('Unable to update <b><i>'.$package->name.'</b></i> package.');
+		}	
 	}
 
 
@@ -88,10 +107,97 @@ class PackagesController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($package_id)
 	{
-		return "Delete a package";
+		$package = $this->package->findOrFail($package_id);
+		$packageName = $package->name;
+		$package->delete();
+
+		return Redirect::back()->withMessage('Successfully deleted <i><b>'.$packageName.'</b></i> package.');
+	}
+
+	/**
+	 * Store Package API handler.
+	 *
+	 * @return store operation status
+	 */
+	public function storeAPI() 
+	{
+		$return_arr = [];
+
+		// add country name info for redirect
+		$return_arr['countryName'] = Input::get('countryName');
+		$return_arr['status'] = 'authentication_failed';
+		$return_arr['errors'] = [];
+
+		if (Auth::check())
+		{
+			// add user id info if authentication passed
+			$return_arr['user_id'] = Auth::id();
+			$return_arr['status'] = 'create_failed';
+
+			if ($this->package->isValid(Input::all()))
+			{
+				// TODO: add authentication and parse content for security
+				$package = $this->package;
+				$package->location_id = Input::get('locationId');			
+				$package->name = Input::get('name');
+				$package->content = Input::get('content');
+				$package->image_url = $this->defaultImageUrl;
+				$package->status = $this->defaultStatus;
+				$package->save();
+
+				if ($package)
+				{
+					$return_arr['status'] = 'save_success';
+				}
+			} else 
+			{
+				$return_arr['status'] = 'validation_failed';
+				$return_arr['errors'] = ($this->package->errors);				
+			}
+		}
+
+		return json_encode($return_arr, JSON_FORCE_OBJECT);
 	}
 
 
+	/**
+	 * Update Package API handler.
+	 *
+	 * @return update operation status
+	 */
+	public function updateAPI()
+	{
+		$return_arr = [];
+		$return_arr['countryName'] = Input::get('countryName');
+		$return_arr['status'] = 'authentication_failed';
+		$return_arr['errors'] = [];
+
+		if (Auth::check())
+		{	
+			// add user id info if authentication passed
+			$return_arr['user_id'] = Auth::id();
+			$return_arr['status'] = 'edit_failed';
+
+			if ($this->package->isValid(Input::all()))
+			{
+				$package = $this->package->findOrFail(Input::get('packageId'));
+				$package->name = Input::get('name');
+				$package->content = Input::get('content');
+				$package->save();
+
+				if ($package)
+				{
+					$return_arr['status'] = 'edit_success';
+				}
+			} else 
+			{
+				$return_arr['status'] = 'validation_failed';
+				$return_arr['errors'] = ($this->package->errors);
+			}
+		}
+
+		return json_encode($return_arr, JSON_FORCE_OBJECT);
+	}
 }

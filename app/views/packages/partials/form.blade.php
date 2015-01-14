@@ -1,16 +1,40 @@
-<div class="form-group{{ $errors->first('name', ' has-error') }}">
+<!-- package name -->
+<div class="form-group" for="name">
+	<label class="control-label" for="name">Name</label>
 	{{ $errors->first('name', '<label class="control-label" for="name">:message</label>') }}
-	{{ Form::text('name', isset($package) ? $package->name : '', ['placeholder' => 'Name of the package', 'class' => 'form-control']) }}
+	{{ Form::text('name', isset($package) ? $package->name : '', ['placeholder' => 'Package name', 'class' => 'form-control']) }}
 </div>
-<div class="form-group{{ $errors->first('description', ' has-error') }}">
-	{{ $errors->first('description', '<label class="control-label" for="description">:message</label>') }}
-	{{ Form::textarea('description', isset($package) ? $package->description : '', ['placeholder' => 'Say something about the package', 'class' => 'form-control', 'rows' => 3]) }}
+
+<!-- package content -->
+<div class="form-group{{ $errors->first('content', ' has-error') }}">
+	<label class="control-label">Content / Itinerary</label>
+	{{ $errors->first('content', '<label class="control-label" for="content">:message</label>') }}
+	<div id="toolbar">
+		<span class="ql-format-group">
+			<span title="Bold" class="ql-format-button ql-bold">B</span>
+			<span title="Italic" class="ql-format-button ql-italic">I</span>
+			<span title="Underline" class="ql-format-button ql-underline">U</span>
+			<span title="Strikethrough" class="ql-format-button ql-strike">S</span>
+		</span>
+	</div>
+	<div id="content" class="form-control"></div>
 </div>
-<div class="form-group{{ $errors->first('tentative', ' has-error') }}">
-	{{ $errors->first('tentative', '<label class="control-label" for="tentative">:message</label>') }}
-	{{ Form::textarea('tentative', isset($package) ? $package->tentative : '', ['placeholder' => 'What is the tentative of this package?', 'class' => 'form-control', 'rows' => 5]) }}
-</div>
-@if (!isset($buttonText))
-	{{ Form::hidden('placeId', $place->id) }}	
+
+
+@if (isset($type))
+	{{ Form::hidden('_method', $type) }}
+	@if (isset($package))
+		{{ Form::hidden('countryName', $package->location->activity->country->name) }}
+		{{ Form::hidden('locationId', $package->location->id) }}
+		{{ Form::hidden('packageId', $package->id) }}	
+		{{ Form::hidden('packageContent', $package->content) }}	
+	@else
+		{{ Form::hidden('countryName', $location->activity->country->name) }}	
+		{{ Form::hidden('locationId', $location->id) }}	
+	@endif
 @endif
-{{ Form::submit(isset($buttonText) ? $buttonText : 'Add package', ['class' => 'btn btn-primary']) }}
+
+<input class="btn btn-primary btn-submit" type="button" value="{{ isset($package) ? 'Edit' : 'Add' }}">
+
+<script type="text/javascript" src="{{ asset('js/vendor/quill.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/packages.form.js') }}"></script>

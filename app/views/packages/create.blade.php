@@ -1,30 +1,17 @@
-@extends('layouts.base')
+@extends('layouts.baseadmin')
 
-@section('stylesheets')
-	{{ HTML::style('css/main.css'); }}
-@stop
-
-@section('content')
-	@include('layouts.partials.nav')
-
+@section('content-admin')
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-xs-12 col-md-8 col-md-offset-2">
 				<div class="panel panel-default">
-					<div class="panel-heading"><h3 class="panel-title">Add a package in <i>{{ $place->name }}</i></h3></div>
+					<div class="panel-heading"><h3 class="panel-title">Add a package for {{ $location->name }}'s {{ $location->activity->name }} activity in {{ $location->activity->country->name }}</h3></div>
 					<div class="panel-body">
-						{{ Form::open(['route' => 'packages.store', 'role' => 'form']) }}
-						@include('packages.partials.form', ['errors' => $errors])	
-						{{ link_to_route('countries.show', 'Cancel', [$place->country->name], ['class' => 'btn btn-link']) }}
-						{{ Form::close() }}
+						@include('packages.partials.form', ['errors' => $errors, 'type' => 'store'])	
+						{{ link_to_route('country.show', 'Cancel', [$location->activity->country->name], ['class' => 'btn btn-link']) }}
 					</div>
 				</div>
 	        </div>
 		</div>
 	</div>
-
-	@include('layouts.partials.footer')	
-@stop
-
-@section('scripts')
 @stop

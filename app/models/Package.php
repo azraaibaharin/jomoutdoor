@@ -2,7 +2,7 @@
 
 class Package extends Eloquent {
 
-	protected $fillable = ['name', 'description', 'tentative'];
+	protected $fillable = ['name', 'content'];
 
 	public $errors;
 
@@ -10,9 +10,7 @@ class Package extends Eloquent {
 	 * Form Validation rules.
 	 */
 	public static $rules = [
-		'name' => 'required',
-		'description' => 'required',
-		'tentative' => 'required'
+		'name' 	=> 'required',
 	];
 
 	/**
@@ -22,9 +20,9 @@ class Package extends Eloquent {
 	 */
 	protected $table = 'packages';
 
-	public function place()
+	public function location()
 	{
-		return $this->belongsTo('place');
+		return $this->belongsTo('Location');
 	}
 
 	/**

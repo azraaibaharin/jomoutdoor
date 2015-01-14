@@ -15,10 +15,11 @@ class CreatePackagesTable extends Migration {
 		Schema::create('packages', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('place_id');
+			$table->integer('location_id');
 			$table->string('name');
-			$table->text('description');
-			$table->text('tentative');
+			$table->longText('content');
+			$table->string('image_url'); // for dropbox or flickr
+			$table->string('status');
 			$table->timestamps();
 		});
 	}

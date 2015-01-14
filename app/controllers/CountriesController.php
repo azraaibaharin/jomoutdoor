@@ -39,16 +39,19 @@ class CountriesController extends \BaseController {
 
 		$country = $this->country;
 		$country->name = Input::get('name');
-		$country->description = Input::get('description');
-		$country->flag_name = $this->getFlagFilename();
+		$country->overview = Input::get('overview');
+		$country->flag_name = $this->getFilename('flag', '/img/flags');
+		$country->image_name = $this->getFilename('image', '/img/countries');
+		$country->status = 'active';
 		$country->save();
 
 		if ($country) 
 		{
-			return Redirect::route('countries.show', $country->name)->withMessage('Success!');
-		} else
+			return Redirect::route('admin')->withMessage('Successfully added <b><i>'.$country->name.'</b></i> country.');;
+		} 
+		else
 		{
-			return Redirect::back()->withInput()->withErrors('Unable to add country, '. $country->name . '.');
+			return Redirect::back()->withInput()->withError('Unable to add <b><i>'.$country->name.'<b></i> country.');
 		}
 	}
 
@@ -56,26 +59,28 @@ class CountriesController extends \BaseController {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  String  $name
+	 * @param  String  $country_name
 	 * @return Response
 	 */
-	public function show($name)
+	public function show($country_name)
 	{
-		$country = $this->country->whereName($name)->firstOrFail();
+		$country = $this->country->whereName($country_name)->firstOrFail();
+		$countries = $this->country->all();
 
-		return View::make('countries.show')->withCountry($country);
+		return View::make('countries.show')->withCountry($country)
+										   ->withCountries($countries);
 	}
 
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  String  $name
+	 * @param  String  $country_id
 	 * @return Response
 	 */
-	public function edit($name)
+	public function edit($country_id)
 	{
-		$country = $this->country->whereName($name)->firstOrFail();
+		$country = $this->country->whereId($country_id)->firstOrFail();
 
 		return View::make('countries.edit')->withCountry($country);
 	}
@@ -95,12 +100,14 @@ class CountriesController extends \BaseController {
 		}
 
 		$country = $this->country->findOrFail($country_id);
+		$this->country = $country;
 		$country->name = Input::get('name');
-		$country->description = Input::get('description');
-		// $country->flag_name = $this->getFlagFilename();
+		$country->overview = Input::get('overview');
+		$country->flag_name = $this->getUpdatedFilename($country->flag_name, 'flag', '/img/flags');
+		$country->image_name = $this->getUpdatedFilename($country->image_name, 'image', '/img/countries');
 		$country->save();
 
-		return Redirect::route('countries.show', $country->name)->withMessage('Updated!');
+		return Redirect::route('country.show', $country->name)->withMessage('Successfully updated <b><i>'.$country->name.'</b></i> country.');
 	}
 
 
@@ -113,28 +120,61 @@ class CountriesController extends \BaseController {
 	public function destroy($country_id)
 	{
 		$country = $this->country->findOrFail($country_id);
+		$countryName = $country->name;
 		$country->delete();
 
-		return Redirect::route('admin');
+		return Redirect::route('admin')->withMessage('Successfully deleted <i><b>'.$countryName.'</b></i> country.');
 	}
 
+	/**
+	 * Retrieve the updated image file name.
+	 *
+	 * @return updated image file name. if no updated file name, return the previous image file name.
+	 */
+	private function getUpdatedFilename($oldFilename, $name, $filepath)
+	{
+		$filename = $this->getFilename($name, $filepath);
+		if ($filename == '')
+		{
+			$filename = $oldFilename;
+		} else {
+			if ($oldFilename != '' && $oldFilename != $filename)
+			{
+				$this->removeFile($oldFilename, $filepath);
+			}
+		}
+		return $filename;
+	}
 
 	/**
-	 * Retrieve flag file name from the form input.
+	 * Remove file based on the file name and path provided.
 	 *
-	 * @return flag filename
 	 */
-	private function getFlagFilename() {
-		$filename = '';
-
-		if (Input::hasFile('flag'))
+	private function removeFile($filename, $filepath)
+	{
+		$toRemoveFilePath = public_path().$filepath.'/'.$filename;
+		if (file_exists($toRemoveFilePath))
 		{
-	        $file            = Input::file('flag');
-	        $destinationPath = public_path() . '/img/';
-	        $filename        = str_random(6) . '_' . $file->getClientOriginalName();
-	        $uploadSuccess   = $file->move($destinationPath, $filename);
-	    }
+			unlink($toRemoveFilePath);
+		}
+	}
 
+	/**
+	 * Retrieve image file name from the form input.
+	 *
+	 * @return image filename
+	 */
+	private function getFilename($name, $filepath)
+	{
+		$filename = '';
+		if (Input::hasFile($name))
+		{
+	        $file            = Input::file($name);
+	        $destinationPath = public_path().$filepath;
+	        $filename        = $this->country->name.'-'.mt_rand(10000,99999).'.png';
+	        $uploadSuccess   = $file->move($destinationPath, $filename);
+	        return $filename;
+	    }
 	    return $filename;
 	}
 }
