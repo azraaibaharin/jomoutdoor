@@ -34,7 +34,7 @@
 
 	<div class="pull-bottom">
 		<div class="white-box text-center">
-			<h2>Choose your destination</h2>
+			<h2>Choose your destinations:</h2>
 		</div>
 		<div class="white-box-50 text-center">
 			@include('layouts.partials.countries')	
