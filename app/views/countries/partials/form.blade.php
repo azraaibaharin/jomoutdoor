@@ -5,6 +5,13 @@
 	{{ Form::text('name', isset($country) ? $country->name : '', ['placeholder' => 'Country name', 'class' => 'form-control']) }}
 </div>
 
+<!-- country index -->
+<div class="form-group{{ $errors->first('index', ' has-error') }}">
+	{{ $errors->first('index', '<label class="control-label" for="index">:message</label>') }}
+	<label class="control-label" for="index">Index</label>
+	{{ Form::select('index', $indexSelection, isset($country) ? $country->index : '0', ['class' => 'form-control']) }}
+</div>
+
 <!-- country overview -->
 <div class="form-group{{ $errors->first('overview', ' has-error') }}">
 	{{ $errors->first('overview', '<label class="control-label" for="overview">:message</label>') }}
@@ -29,7 +36,7 @@
 <!-- country image -->
 <div class="form-group{{ $errors->first('image', ' has-error') }}">
 	{{ $errors->first('image', '<label class="control-label" for="image">:message</label>') }}
-	<label class="control-label" for="image">Image</label>
+	<label class="control-label" for="image">Image (for optimum page load speed, size < 1MB)</label>
 	@if (isset($country))
 		@if ($country->image_name == '')
 			<label class="form-control">No image</label>

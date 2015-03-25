@@ -21,7 +21,13 @@ class CountriesController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('countries.create');
+		$countries = $this->country->all();
+		$indexSelection = array();
+		for ($i = 0; $i < count($countries); $i++)
+		{
+			array_push($indexSelection, $i);
+		}
+		return View::make('countries.create')->with('indexSelection', $indexSelection);
 	}
 
 
@@ -39,6 +45,7 @@ class CountriesController extends \BaseController {
 
 		$country = $this->country;
 		$country->name = Input::get('name');
+		$country->index = Input::get('index');
 		$country->overview = Input::get('overview');
 		$country->flag_name = $this->getFilename('flag', '/img/flags');
 		$country->image_name = $this->getFilename('image', '/img/countries');
@@ -81,8 +88,14 @@ class CountriesController extends \BaseController {
 	public function edit($country_id)
 	{
 		$country = $this->country->whereId($country_id)->firstOrFail();
+		$countries = $this->country->all();
+		$indexSelection = array();
+		for ($i = 0; $i < count($countries); $i++)
+		{
+			array_push($indexSelection, $i);
+		}
 
-		return View::make('countries.edit')->withCountry($country);
+		return View::make('countries.edit')->withCountry($country)->with('indexSelection', $indexSelection);
 	}
 
 
@@ -102,6 +115,7 @@ class CountriesController extends \BaseController {
 		$country = $this->country->findOrFail($country_id);
 		$this->country = $country;
 		$country->name = Input::get('name');
+		$country->index = Input::get('index');
 		$country->overview = Input::get('overview');
 		$country->flag_name = $this->getUpdatedFilename($country->flag_name, 'flag', '/img/flags');
 		$country->image_name = $this->getUpdatedFilename($country->image_name, 'image', '/img/countries');

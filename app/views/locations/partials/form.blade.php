@@ -14,7 +14,7 @@
 
 <!-- location image -->
 <div class="form-group{{ $errors->first('image', ' has-error') }}">
-	<label class="control-label" for="image">Image</label>
+	<label class="control-label" for="image">Image (for optimum page load speed, size < 1MB)</label>
 	{{ $errors->first('image', '<label class="control-label" for="image">(:message)</label>') }}
 	@if (isset($location))
 		@if ($location->image_name == '')

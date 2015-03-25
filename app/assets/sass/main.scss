@@ -138,8 +138,9 @@ img.form-control {
 	border-color: transparent;
 	.navbar-brand {
 		font-size: 16px;
-		font-weight: 500;
+		font-weight: 700;
 		text-transform: uppercase;
+		letter-spacing: 5px;
 		color: #777;
 		-webkit-font-smoothing: antialiased;
 		-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
@@ -335,12 +336,11 @@ img.form-control {
 	}
 
 }
-h2.hero {
-	font-size: 30px;
+h1.hero {
+	font-size: 45px;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
-	text-transform: uppercase;
 }
 h3.hero {
 	font-size: 18px;
@@ -359,8 +359,8 @@ h4.hero {
 	text-transform: uppercase;
 }
 p.hero {
-	font-size: 18px;
-	margin-bottom: 35px;
+	font-size: 14px;
+	margin-bottom: 15px;
 }
 .full-page-heading {
 	position: relative;
@@ -391,11 +391,17 @@ p.hero {
 }
 .white-box {
 	background-color: rgba(255, 255, 255, 1);
+	h1 {
+		color: #000;
+		font-size: 
+	}
 	h2 {
 		color: #777;
-		font-size: 16px;
+		font-size: 12px;
 		margin: 0;
-		padding: 10px 15px;
+		padding: 15px 0;
+		letter-spacing: 2px;
+		text-transform: uppercase;
 	}
 }
 .white-box-50 {
@@ -420,6 +426,7 @@ p.bg-info {
 		background-position: 50% 50%;
 	}
 	.details {
+		font-size: 12px;
 		padding: 5px 15px 15px;
 		h5 {
 			color: #cc6633;
@@ -433,9 +440,6 @@ p.bg-info {
 		    line-height: 20px;
 		    max-height: 80px;
 		    overflow: hidden;
-		}
-		a {
-			font-size: 12px;
 		}
 	}
 }
@@ -459,8 +463,10 @@ p.bg-info {
 		background-color: #f0f0f0;
 	}
 	.tab-content {
+		overflow-y: scroll;
 		padding: 10px;
 		min-height: 250px;
+		max-height: 250px;
 	}
 }
 .fullscreen-bg:before {
@@ -584,6 +590,14 @@ p.bg-info {
 		}
 	}
 }
+#login {
+	a.navbar-brand {
+		color: #000;
+		&:hover {
+			color: #000;
+		}
+	}
+}
 #admin {
 	.navbar-brand img {
 		height: 20px;
@@ -639,8 +653,16 @@ footer {
 	.navbar-nav > li > a {
 		line-height: 30px;
 	}
-	h2.hero {
+	.white-box {
+		h2 {
+			letter-spacing: 4px;
+		}
+	}
+	h1.hero {
 		font-size: 60px;
+	}
+	h2.hero {
+		font-size: 12px;
 	}
 	h3.hero {
 		font-size: 28px;
@@ -650,6 +672,7 @@ footer {
 		color: #777;
 		font-size: 24px;
 		margin-bottom: 15px;
+		letter-spacing: 4px;
 	}
 	p.hero {
 		font-size: 24px;
@@ -667,6 +690,11 @@ footer {
 			    line-height: 24px;
 			    max-height: 96px;
 			}
+		}
+	}
+	.location-details-modal {
+		.tab-content {
+			max-height: 450px;
 		}
 	}
 	#activity-sidebar {

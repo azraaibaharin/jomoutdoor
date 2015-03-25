@@ -22,10 +22,10 @@
 							</div>
 							<div class="btn-group btn-group-justified">
 								<div class="btn-group">
-									{{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
+									{{ Form::submit('Sign In', ['class' => 'btn btn-primary']) }}
 								</div>
 								<div class="btn-group">
-									<a href="" class="btn btn-default">Register</a>
+									<a href="{{{ route('home') }}}" class="btn btn-default">Cancel</a>
 								</div>
 							</div>	
 						{{ Form::close() }}

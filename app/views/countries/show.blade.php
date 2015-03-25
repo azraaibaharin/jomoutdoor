@@ -21,7 +21,7 @@
 						
 						<div class="row">
 							<div class="col-xs-12">
-							    <h2 class="hero">{{ $country->name }}</h2>
+							    <h1 class="hero">{{ $country->name }}</h1>
 						    @if (isset($country->overview) && trim($country->overview)!=='')
 								<p class="hero">{{ $country->overview }}</p>
 							@endif
@@ -61,5 +61,5 @@
 @stop
 
 @section('scripts')
-	<script type="text/javascript" src="{{ asset('js/countries.show.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/delete.button.js') }}"></script>
 @stop

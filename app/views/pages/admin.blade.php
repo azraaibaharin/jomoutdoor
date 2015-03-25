@@ -34,7 +34,7 @@
 										<th>Name</th>
 										<th>Activities</th>										
 										<th>Locations</th>
-										<th>Packages</th>
+										<th>Order</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -71,7 +71,7 @@
 											<span class="label label-default">{{ $locationsCount }}</span>
 										</td>
 										<td>
-											<span class="label label-default">{{ $packagesCount }}</span>
+											<span class="label label-default">{{ $country->index }}</span>
 										</td>
 									</tr>
 								@endforeach
@@ -128,5 +128,42 @@
 				
 	        </div>
 		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+					    <h3 class="panel-title">
+					    	All pages
+					    </h3>
+					</div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+								@foreach ($pages as $page)
+									<tr>
+										<td>
+											<a href="{{ route('page.show', ['page_name' => $page->name]) }}" title="View user">{{ $page->name }}</a>
+										</td>
+										<td>{{ $page->status }}</td>
+									</tr>
+								@endforeach
+								</tbody>
+							</table>
+						</div>
+						<!-- <a href="{{ route('page.create') }}" class="btn btn-sm btn-primary"  title="Add a page">Add a page</a> -->
+					</div>
+				</div>
+				
+	        </div>
+		</div>
+
 	</div>
 @stop

@@ -4,12 +4,14 @@
 	@foreach ($locations as $location)
 		<div class="col-xs-12 col-md-3">
 			<div class="location">
-				<div class="image" style="background-image: url('{{ asset('img/locations/'.$location->image_name) }}')"></div>
-				<div class="details">
-					<h5>{{ $location->name }}</h5>
-			  		<p>{{ $location->overview }}</p>
-			  		<a data-toggle="modal" href="#location-{{ $location->id }}-details">View details</a>
-				</div>
+				<a data-toggle="modal" href="#location-{{ $location->id }}-details">
+					<div class="image" style="background-image: url('{{ asset('img/locations/'.$location->image_name) }}')"></div>
+					<div class="details">
+						<h5>{{ $location->name }}</h5>
+				  		<p>{{ $location->overview }}</p>
+				  		View details
+					</div>
+				</a>
 			</div>
 		</div>
 
